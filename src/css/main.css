@@ -22,79 +22,190 @@
 }
 
 body {
-  color: #2E2F42;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-.form {
+  margin: 0;
   display: flex;
-  align-items: center;
-  width: 372px;
-  margin: 32px auto;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  /* Забезпечує вирівнювання по вертикалі на весь екран */
+  margin-top: 36px;
 }
 
-button {
-  color: #FFF;
-  font-family: Montserrat;
+.app {
+  text-align: center;
+}
+
+.searchForm {
+  /* Додайте потрібні стилі для форми, які вам потрібні */
+}
+
+.searchInput {
+  width: 272px;
+  margin-top: 40px;
+  margin-bottom: 32px;
+  margin-left: 10px;
+  color: #2e2f42;
+  font-family: 'Montserrat';
   font-size: 16px;
-  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #808080;
+  padding-inline: 8px 16px;
+  /* /* transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
+}
+
+.searchInput:focus,
+.searchInput:active,
+.searchInput.searchButtonPressed {
+  border-color: #4e75ff;
+}
+
+.searchInput:hover {
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  border: 0.5px solid #000;
+}
+
+.button {
+  color: #fff;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  border-radius: 8px;
-  background: #4E75FF;
-  height: 40px;
-  width: 91px;
   padding: 8px 16px;
+  border-radius: 8px;
+  background: #4e75ff;
   border: none;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover {
-  background: #6C8CFF;
+.button:hover,
+.button:focus {
+  cursor: pointer;
+  color: #fff;
+  background: #6c8cff;
 }
 
-input[type="text"] {
-  width: 272px;
-  height: 40px;
-  border-radius: 4px;
-  background: #FFF;
-  padding: 8px 16px 8px 16px;
-  border: 1px solid #808080;
-  margin-right: 8px;
-  color: #808080;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-input[type="text"]:hover {
-  border: 1px solid #000000;
+ul {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
-input[type="text"]:focus {
-  outline: none;
-  border: 1px solid #4E75FF;
-  color: #2E2F42;
+a {
+  text-decoration: none;
 }
 
-.image-list {
-  margin: 0 auto;
-  width: 1128px;
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.gallery {
   display: flex;
-  gap: 24px;
+  width: 1440px;
+  height: 696px;
+  padding: 24px 156px;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.gallery-item {
+  width: calc((100% - 48px) / 3);
+}
+
+
+.image-details {
+  background-color: #f8f8f8;
+  /* Пример фона для блока с деталями изображения */
+  padding: 10px;
+  /* Пример внутренних отступов для блока с деталями изображения */
+  border-radius: 8px;
+  /* Пример скругления углов для блока с деталями изображения */
+  margin-top: 5px;
+  /* Пример отступа сверху для блока с деталями изображения */
+}
+
+/* Пример стилей для деталей изображения внутри .image-details */
+.image-details p {
+  margin: 5px 0;
+  color: #000;
+}
+
+.likes,
+.views,
+.comments,
+.downloads {
+  font-weight: bold;
+}
+
+.result-likes,
+.result-views,
+.result-comments,
+.result-downloads {
+  font-weight: normal;
+}
+
+/* Додайте стилі для індикатора завантаження */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loader-container {
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  animation: spin 1s linear infinite;
+  display: block;
+  margin-top: 30px;
+}
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
 
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
+/* Приховати індикатор завантаження за замовчуванням */
+.loader.hidden {
+  display: none;
+}
