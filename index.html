@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 11</title>
+    
+    <script type="module" crossorigin src="/goit-js-hw-11/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-46aac873.js">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/vendor-eb6030bc.css">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-a3c5d4b8.css">
+  </head>
+  <body>
+
+    <!-- <form class="form">
+      <input type="text" name="keyword" placeholder="Search images..." required />
+    
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div class="image-list">Loading images, please wait...</div> -->
+
+    <div class="app">
+      <form class="searchForm">
+        <label for="searchInput"></label>
+        <!-- Замінено textarea на input -->
+        <input type="text" id="searchInput" class="searchInput" placeholder="Search images" />
+        <button type="submit" class="button">Search</button>
+      </form>
+      <div class="loader-container">
+        <div class="loader hidden">Loading images, wait please...</div>
+      </div>
+      <div class="gallery"></div>
+    </div>
+
+      
+  </body>
+</html>
