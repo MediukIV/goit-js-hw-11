@@ -1,71 +1,3 @@
-// import iziToast from 'izitoast';
-// import 'izitoast/dist/css/iziToast.min.css';
-// import okIcon from '../img/ok.svg';
-// import errorIcon from '../img/err.svg';
-
-// const fetchImageBtn = document.querySelector(".btn");
-// const imageList = document.querySelector(".image-list");
-
-// fetchImageBtn.addEventListener("submit", (event) => {
-//     event.preventDefault();
-//     // const form = event.target;
-// //     const delay = form.elements.delay.value;
-// //     const state = form.elements.state.value;
-//     fetchImage(event)
-//     .then((data) => {
-//         console.log(data);
-//         return data
-//     })
-//     .catch((error) => onRejected(error));
-// });
-
-// // renderImage
-
-// function fetchImage(event) {
-//   return fetch('https://pixabay.com/api/?key=42096263-920755fbf423cd5814494514c&q=yellow+flowers&image_type=photo&orientation=horizontal&safesearch=true')
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error(`Error`);
-//       }
-//       return response.json();
-//     }
-//   );
-// }
-
-// // const searchParams = new URLSearchParams({
-// //     key: '42096263-920755fbf423cd5814494514c',
-// //     q: 'cat',
-// //     image_type: 'photo',
-// //     orientation: 'horizontal',
-// //     safesearch: true
-// // });
-// // console.log(searchParams)
-
-// // function renderImage(images) {
-// //   const markup = images
-// //     .map((image) => {
-// //       return `<li>
-// //           <p><b>Name</b>: ${image.name}</p>
-// //           <p><b>Email</b>: ${image.email}</p>
-// //           <p><b>Company</b>: ${image.company.name}</p>
-// //         </li>`;
-// //     })
-// //     .join("");
-// //     imageList.insertAdjacentHTML("beforeend", markup);
-// // }
-
-// function onRejected(error) {
-//     iziToast.show({
-//         title: 'Error',
-//         titleColor: '#FFFFFF',
-//         message: `Rejected promise`,
-//         messageColor: '#FFFFFF',
-//         messageSize: '16px',
-//         backgroundColor: '#EF4040',
-//         iconUrl: errorIcon,
-//         position: 'topRight'
-//     });
-// };
 // Підключаємо бібліотеку для сповіщень (Toast) та її стилі
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -87,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const apiUrl = "https://pixabay.com/api/";
 
   // Створюємо екземпляр SimpleLightbox та вказуємо селектор для зображень у галереї
-  const lightbox = new SimpleLightbox(".gallery a");
+  const lightbox = new SimpleLightbox(".gallery a", {captionDelay: 250, captionsData: 'alt'});
 
   // Встановлюємо обробник подій для форми при її відправці
   form.addEventListener("submit", (event) => {
@@ -102,7 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // Якщо ключове слово відсутнє, виводимо повідомлення про помилку
       iziToast.error({
         title: "Error",
+        titleColor: '#FFFFFF',
         message: "Please enter a search term.",
+        messageColor: '#FFFFFF',
+        messageSize: '16px',
+        backgroundColor: '#EF4040',
+        iconColor: '#FFFFFF',
+        position: 'topRight'
       });
       return;
     }
@@ -125,15 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // Перевіряємо, чи отримані зображення
         if (data.hits.length === 0) {
           // Якщо зображення відсутні, виводимо повідомлення
-          iziToast.error({
+          iziToast.warning({
             title: "",
             titleColor: '#FFFFFF',
             message: "Sorry, there are no images matching your search query. Please try again!",
             messageColor: '#FFFFFF',
             messageSize: '16px',
-            backgroundColor: '#EF4040',
+            backgroundColor: '#FFA000',
             iconColor: '#FFFFFF',
-            position: 'topRight'
+            position: 'center'
           });
         } else {
           // Якщо є зображення, відображаємо їх на сторінці
@@ -168,6 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Приховуємо індикатор завантаження після завершення запиту
         loader.classList.add("hidden");
       });
+    
+    // Очищаємо Input форми
+    form.reset();
+
   });
 
   // Функція для відображення зображень на сторінці

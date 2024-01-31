@@ -21,13 +21,13 @@
   box-sizing: border-box;
 }
 
+
 body {
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  /* Забезпечує вирівнювання по вертикалі на весь екран */
   margin-top: 36px;
 }
 
@@ -36,7 +36,7 @@ body {
 }
 
 .searchForm {
-  /* Додайте потрібні стилі для форми, які вам потрібні */
+  
 }
 
 .searchInput {
@@ -53,7 +53,6 @@ body {
   border-radius: 4px;
   border: 1px solid #808080;
   padding-inline: 8px 16px;
-  /* /* transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); */
   transition-property: border-color;
   transition-duration: 250ms;
   transition-timing-function: linear;
@@ -73,15 +72,20 @@ body {
 }
 
 .button {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  padding: 8px 16px;
-  border-radius: 8px;
-  background: #4e75ff;
-  border: none;
+color: #FFF;
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 1.5;
+letter-spacing: 0.04em;
+border-radius: 8px;
+background: #4E75FF;
+height: 40px;
+width: 91px;
+padding: 8px 16px;
+border: none;
+transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover,
@@ -109,16 +113,16 @@ a {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+  width: 360px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .gallery {
   display: flex;
   width: 1440px;
   height: 696px;
-  padding: 24px 156px;
+  padding: 0px 156px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -130,22 +134,38 @@ img {
 
 .gallery-item {
   width: calc((100% - 48px) / 3);
+  border: 1px solid #808080;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover {
+  box-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08),
+    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+    0px 2px 1px 0px rgba(46, 47, 66, 0.08);
 }
 
 
 .image-details {
   background-color: #f8f8f8;
-  /* Пример фона для блока с деталями изображения */
   padding: 10px;
-  /* Пример внутренних отступов для блока с деталями изображения */
   border-radius: 8px;
-  /* Пример скругления углов для блока с деталями изображения */
-  margin-top: 5px;
-  /* Пример отступа сверху для блока с деталями изображения */
+  color: #2E2F42;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 48px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-/* Пример стилей для деталей изображения внутри .image-details */
-.image-details p {
+.image-details p { 
   margin: 5px 0;
   color: #000;
 }
@@ -164,7 +184,6 @@ img {
   font-weight: normal;
 }
 
-/* Додайте стилі для індикатора завантаження */
 .loader-overlay {
   position: fixed;
   top: 0;
@@ -205,7 +224,6 @@ img {
   }
 }
 
-/* Приховати індикатор завантаження за замовчуванням */
 .loader.hidden {
   display: none;
 }
